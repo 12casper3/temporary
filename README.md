@@ -37,19 +37,19 @@ _Delft University of Technology_
 ## Stakeholders
 
 
-## Context
+## Context View
 
 
-## Development
+## Development View
 
 
-## Technical
+## Technical Dept
 
 
-## Deployment
+## Deployment View
 
 
-## Evolution
+## Evolution of Phaser
 
 
 ## Conclusion
