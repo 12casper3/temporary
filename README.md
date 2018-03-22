@@ -20,12 +20,12 @@ _Delft University of Technology_
 ## Table of Contents
 
 1. [Introduction](#introduction)
-2. [Stakeholders](#Stakeholders)
-3. [Context View](#Context-View)
-4. [Development View](#ViewDevelopment-View)
-5. [Technical Debt](#Technical-Dept)
-6. [Deployment View](#Deployment-View)
-7. [Evolution of Phaser](#Evolution-of-Phaser)
+2. [Stakeholders](#stakeholders)
+3. [Context View](#context-view)
+4. [Development View](#viewdevelopment-view)
+5. [Technical Debt](#technical-dept)
+6. [Deployment View](#deployment-view)
+7. [Evolution of Phaser](#evolution-of-phaser)
 8. [Conclusion](#conclusion)
 9. [References](#references)
 
