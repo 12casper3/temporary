@@ -7,7 +7,7 @@ To analyze the technical debt, we use code quality tools like SonarQube to get a
 
 ### Code quality tools analysis results
 
-We chose to use two different online code quality tools: SonarQube \(we used SonarCloud as online platform for it\) and DeepScan. As SonarQube gave more results we decided to start improving our technical debt with this tool. The results of both scans are discussed in the following sections.
+We chose to use two different online code quality tools: SonarQube (we used SonarCloud as online platform for it) and DeepScan. As SonarQube gave more results we decided to start improving our technical debt with this tool. The results of both scans are discussed in the following sections.
 
 #### SonarQube
 
