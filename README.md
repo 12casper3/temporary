@@ -10,7 +10,7 @@ and
 
 _Delft University of Technology_
 
-![Phaser](images-phaser/phaser.png "Phaser")
+![Phaser](images/phaser_logo.png.png "Phaser Logo")
 
 ## Abstract
 <!-- Explain briefly what Phaser is. -->
