@@ -1,12 +1,10 @@
 # Phaser - A Fun, Free and Fast 2D Game Framework for HTML5 browser games supporting Canvas and WebGL rendering.
 
-**
-[Gerard van Alphen](https://github.com/ger1995),
+**[Gerard van Alphen](https://github.com/ger1995),
 [Tom Catshoek](https://github.com/TCatshoek),
 [Tomas Heinsohn Huala](https://github.com/Tomas2h),
 and
-[Casper van Wezel](https://github.com/12casper3).
-**
+[Casper van Wezel](https://github.com/12casper3).**
 
 _Delft University of Technology_
 
@@ -14,8 +12,10 @@ _Delft University of Technology_
 
 ## Abstract
 <!-- Explain briefly what Phaser is. -->
+TODO[cw]:
 
 <!-- Explain briefly what this chapter is about. -->
+TODO[cw]:
 
 ## Table of Contents
 
@@ -31,8 +31,10 @@ _Delft University of Technology_
 
 ## Introduction
 <!-- Explain what Phaser is. -->
+TODO[cw]:
 
 <!-- Explain the content of this chapter. -->
+TODO[cw]:
 
 ## Stakeholder Analysis
 
@@ -89,6 +91,7 @@ Of course the main incentive for Richard to start developing this framework is t
 Besides, it is used by several other HTML5 game developers.
 
 ## Issue Analysis
+TODO[cw]: remove these, but maybe say something about the general trend.
 
 ### [[Closed] Loader bug for audio and audioSprite beta 19 _#3182_](https://github.com/photonstorm/phaser/issues/3182)
 <!-- same day fix -->
@@ -146,6 +149,8 @@ A user posted a workaround in the comments, after which Richard decided to close
 
 ## Pull Request Analysis
 Almost all of the pull requests are a reviewed/approved/closed by Richard Davey.
+
+TODO[cw]: remove these, but maybe say something about the general trend.
 ### [[Open] Update WebGL Graphics.arc to work more like on Canvas _#3240_ ](https://github.com/photonstorm/phaser/pull/3240)
 This user (called Twilrom) added some code which fixes problems with circle rendering done.
 This help future Users and Developers as the API will run more smoothly when the circle rendering is done right.    
@@ -395,7 +400,7 @@ Setting up a test environment for this project would however require a lot of in
     NOTES:
     With a good functional view, it will also be easier to explain the development view better (which has to be improved anyway)
 -->
-TODO: @Tcatshoek talk about Phaser start-up sequence?
+TODO: @Tcatshoek talk about Phaser start-up sequence and/or plugins
 
 
 
@@ -430,5 +435,7 @@ There is a separete [Phaser 3 Documentation repository](https://github.com/photo
 Since all documentation is automatically anyway, it would have been nice to just publish it anyway and refresh it every release because this might trigger other developers or users into updating the documentation when they need to.
 
 ## Conclusions
+TODO[cw]:
 
 ## References
+TODO[cw]: either add some or remove
