@@ -20,13 +20,13 @@ _Delft University of Technology_
 ## Table of Contents
 
 1. [Introduction](#introduction)
-2. [Stakeholders](#stakeholders)
+2. [Stakeholder Analysis](#stakeholder-analysis)
 3. [Context View](#context-view)
 4. [Development View](#development-view)
 5. [Technical Debt](#technical-dept)
 6. [Functional  View](#functional-view)
 7. [Evolution of Phaser](#evolution-of-phaser)
-8. [Conclusion](#conclusion)
+8. [Conclusions](#conclusions)
 9. [References](#references)
 
 ## Introduction
@@ -429,7 +429,6 @@ Just as with many other projects, documentation here is always lagging the deplo
 There is a separete [Phaser 3 Documentation repository](https://github.com/photonstorm/phaser3-docs), but it is not yet hosted on the Phaser website since it is not yet complete according to the Richard.
 Since all documentation is automatically anyway, it would have been nice to just publish it anyway and refresh it every release because this might trigger other developers or users into updating the documentation when they need to.
 
-## Conclusion
+## Conclusions
 
 ## References
-
