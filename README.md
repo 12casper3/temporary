@@ -20,10 +20,10 @@ TODO[cw]:
 ## Table of Contents
 
 1. [Introduction](#introduction)
-2. [Stakeholder Analysis](#stakeholder-analysis)
+2. [Stakeholders Analysis](#stakeholders-analysis)
 3. [Context View](#context-view)
 4. [Development View](#development-view)
-5. [Technical Debt](#technical-dept)
+5. [Technical Debt](#technical-debt)
 6. [Functional  View](#functional-view)
 7. [Evolution of Phaser](#evolution-of-phaser)
 8. [Conclusions](#conclusions)
@@ -36,7 +36,8 @@ TODO[cw]:
 <!-- Explain the content of this chapter. -->
 TODO[cw]:
 
-## Stakeholder Analysis
+## Stakeholders Analysis
+To get a feeling about everyone who is involved in the Phaser project, all the stakeholders will be listed and explained below.
 
 ### Donators
 The project has a [Patreon](https://www.patreon.com/photonstorm) page via which supporters can pledge a monthly contribution.
@@ -44,6 +45,7 @@ This helps the funding of the project and its developers.
 The pledgers get some small rewards in return (a forum badge and a discount on new Phaser products).
 At the time of writing (22-02-2018) the Patreon has 171 pledgers, contributing a total of $1616 per month.
 There is also the possibility to do a one-off donation, for the people who do not like to commit to a monthly payment.
+The main sponsors of Phaser are [CrossInstall](https://web.crossinstall.com) and [Orange Games](http://orangegames.com/) two companies which use Phaser in their commercial products.
 
 ### Communicators
 [Richard Davey](https://github.com/photonstorm/), the creator of the project, is mainly responsible for the communication.
@@ -89,6 +91,13 @@ When a game developer has questions about the framework, the developers in the [
 ### Users
 Of course the main incentive for Richard to start developing this framework is to use it for his own company Photon Storm.
 Besides, it is used by several other HTML5 game developers.
+
+### Competitors
+With over 20 000 stars on GitHub Phaser is the biggest HTML5 game framework, but Phaser does have some notable competitors.
+For example [PixiJS](https://github.com/pixijs/pixi.js) which is a lightweight library mostly used for the rendering part of game creation.
+In fact, Phaser used to be based on PixiJS, but in the meantime it has been heavily modified and incorporated in the system.
+Other interesting Phaser competitors can be found in this [GitHub collection](https://github.com/collections/javascript-game-engines). 
+Some of them focus on 3D games whereas Phaser's main focus is 2D games (although it has some support for 3D).
 
 ## Issue Analysis
 TODO[cw]: remove these, but maybe say something about the general trend.
@@ -149,8 +158,8 @@ A user posted a workaround in the comments, after which Richard decided to close
 
 ## Pull Request Analysis
 Almost all of the pull requests are a reviewed/approved/closed by Richard Davey.
+TODO[cw]: remove these, but maybe say something more about the general trend.
 
-TODO[cw]: remove these, but maybe say something about the general trend.
 ### [[Open] Update WebGL Graphics.arc to work more like on Canvas _#3240_ ](https://github.com/photonstorm/phaser/pull/3240)
 This user (called Twilrom) added some code which fixes problems with circle rendering done.
 This help future Users and Developers as the API will run more smoothly when the circle rendering is done right.    
@@ -215,40 +224,73 @@ He just thinks about the effects of each PR before merging, so there is not an o
 It would of course be interesting to talk to Richard before we are going to do any work on the project.
 
 ## Context View
-In this chapter the relationships of Phaser with it's environment will be described, as per Rozanski and Woods.
+In this section the relationships of Phaser with its environment will be described, as per Rozanski and Woods.
 We will determine the system scope and responsibilities, analyze how it relates to the external entities involved, and what the interfaces between the system and those entities are.
 
-### System Scope and responsibilities
-Phaser is a game framework which game developers can use to handle:
+### System scope and responsibilities
+Phaser is a javascript game framework which game developers can use to handle:
 
-* Graphics rendering
-* Animation
-* Sound
-* Input
-* Asset loading
-* Physics
+* Graphics rendering using WebGL and canvas, mainly 2D but also with preliminary 3D support
+* Animation, tweens and interpolation
+* Sound effects and music
+* Input from keyboard, mouse, touch, and gamepads
+* Asset loading from URLs 
+* Physics using Arcade physics, Matter.js, and in the future P2 Physics and Box2D
+
+For the sake of completeness, there are also things phaser does not do:
+
+* Implement game logic
+* At the time of writing, implement full 3D graphics support
+* Package itself for environments other than browsers
+* Host game assets
 
 ### External entities
 Since phaser is a framework, it certainly does not operate in a vacuum.
-Several of it's relations to the outside world are described below:
+Several of its relations to the outside world are described below:
 
 * It is developed using Javascript and HTML5
 * It runs in most modern browsers, like Firefox and Chrome
 * Games made with phaser can be packaged for Android, iOS and as a native app using 3rd party tools like [cordova](https://cordova.apache.org/) and [electron](https://electronjs.org/).
-* It uses a custom build of [Pixi.js](https://github.com/pixijs/pixi.js) under the hood for it's WebGL and Canvas rendering.
+* It uses a custom rendering engine which supports both [webgl](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API) and HTML5 [canvas](https://www.w3schools.com/html/html5_canvas.asp)
 * [Webpack](https://webpack.js.org/) is used as a build system
 * Github is used as a version control system and issue tracker
-* Development of Phaser is financed by it's [Patreon](https://www.patreon.com/photonstorm), [Paypal donations](https://phaser.io/community/donate), and it's two main sponsors, [OrangeGames](http://orangegames.com/) and [CrossInstall](https://crossinstall.com/).
+* Development of Phaser is financed by its [Patreon](https://www.patreon.com/photonstorm), [Paypal donations](https://phaser.io/community/donate), and its two main sponsors, [OrangeGames](http://orangegames.com/) and [CrossInstall](https://crossinstall.com/).
 * It is available under the [MIT](https://opensource.org/licenses/MIT) license
 * Game developers build [their games](https://phaser.io/games) on phaser
 * Gamers of all ages play the games made with phaser
 
-### Context diagram
-An overview of phaser and it's relations to the external entities mentioned above can be seen in the Figure below.
+### External interfaces
+Here we will describe the interfaces between phaser and its external entities. 
 
-![Context diagram](./images/context_diagram.png)
+| Entity | Data | Service | Event |
+|:-------|:----:|:-------:|:-----:|
+|Javascript | both | both | provider | 
+|Html5 / canvas| consumer | provider | x |
+|WebGL|consumer| provider |x |
+|Webpack |x | provider |x | 
+|Github |x | provider  |x | 
+|Games |x | consumer  |x | 
+
+Some of this might require a little clarification. We see Javascript as both a data provider and consumer as it can be used for asset loading and all other forms of data input, as well as output (eg. uploading highscores or save files to an external server. That would be up to the games made with phaser to implement though, but the option is there). We also see it as both a service provider and consumer as it is obviously used to call the phaser api, but phaser itself is written in javascript. On top of that, we also see it as an event provider, as it passes input events from input devices to phaser to handle later. 
+
+Html5, or more precisely the canvas element, is seen as a data consumer, as phaser passes information to it on what to draw. It is also a service provider, as it provides drawing functionality to phaser. The same goes for WebGL. 
+
+Webpack provides a module bundling service to phaser, which is used to create a distributable, and possibly minified build of phaser to use in production.
+
+Github provides version control and tools for collaboration.
+
+Games consume the services provided by phaser by calling its API to do all things games want to do. 
+
+### Context diagram
+An overview of phaser and its relations to the external entities mentioned above can be seen in the Figure below.
+
+![Context diagram](./images/Context_diagram.png)
 
 ## Development View
+<!-- p366 of the book-->
+Since software development environments often require special dependencies or configrations, this section covers important details of the Phaser development environment.
+The organization and structure of the code and architecture will be discussed, as well as the testing facilities.
+
 ### Module Organization
 The Phaser project consists of 28 different packages and some configuration files.
 The most important package is the `boot` package which initializes the game.
@@ -279,35 +321,60 @@ The most important one here is the `math` package as maths are used a lot in the
 ### Common Processing
 Because our framework supports multiple platforms there are some interfaces in the software which open up the possibilities for using different implementation.
 The biggest example for that is the Renderer.
-The framework has a `CANVAS` and `WEBGL` Renderer which can (or at least should) be used interchangeably so when a device/browser does not support `WEBGL` the framework automatically falls back to the `CANVAS` Renderer.
+The framework has a `CANVAS` and `WEBGL` Renderer which can be used interchangeably so when a device/browser does not support `WEBGL` the framework automatically falls back to the `CANVAS` Renderer.
 So this is not really a Common Design Model, but more a Common Behaviour Model just doing Common Processing.
+This is useful when you want your game to be compatible with for example older versions of Internet Explorer or native Android browsers, as some of them do not support WEBGL:
+
+![WEBGL browser support](./images/webgl-support.png)
+*[Source](https://caniuse.com/#feat=webgl), red boxes indicate browser versions that do not support WEBGL*
+
+You can specify which renderer you want to use with the `type` attribute in your game config.
+The options are:
+
+- `type: Phaser.AUTO`, this will automatically detect which renderer is supported and choose the best option
+- `type: Phaser.WEBGL`, for WEBGL rendering
+- `type: Phaser.CANVAS`, for CANVAS rendering
+- `type: Phaser.HEADLESS`, for no rendering at all
+
+The big advantage of this design is that the implementation is the same for each renderer, which means you only have to write the code once to support multiple renderers/browsers.
 
 ### Standardization of Design
 The `GameObjects` module contains a lot of different classes (e.g. `container`, `group`, `images`, `mesh`, `particle emitter`, `sprites`, `text`, `tilemap`).
 Each of these classes behave similarly, so for example the action `translate(x,y)` can be called on any of those objects in order to translate them.
+This is standardized by having all individual GameObjects extend the `GameObject` class.
+
+Using this standardization, all of these GameObjects can then be created in a Scene and be manipulated in the same way.
+Any additional functionality can be implemented in each individual `GameObject`.
+This makes the system more maintainable and easier to extend.
+Whenever a new `GameObject` needs to be added, simply create a class which extends `GameObject` and implement the additional functionalty.
 
 ### Standardization of Testing
 This project has limited automated testing functions.
 Instead this project uses quite an extensive collection of examples, so for most of the functionalities and features simple example scripts are provided.
 This serves both documentation and testing purposes.
-Recently Travis continuous integration was added.
-However it is not very extensive, because it just checks if `webpack` and `ESLint` do not return any errors.
+Recently Travis continuous integration was added, however it is not very extensive because it just checks if `webpack` and `ESLint` do not return any errors.
 It has to be noted that `webpack` just checks for Javascript syntax errors, so it is still possible for errors to pass the CI.
 
+However, setting up a testing framework could improve the quality and reliability of Phaser as a framework. As Phaser makes use of a lot of helper functions, there is a need to start testing these functions first. For instance, the Math package contains helper classes for performing mathematical operations and the Utils package contains additional functionalities for the objects String, Array and Object. Furthermore, it would also be beneficial to test the data loading, as the graphics used in Phaser projects could consist of external files like images or gifs. Another part which could use some testing is the Gameobjects module as this contains a lot of configurations options, as well as a wide variety of actions that can be performed on these objects.  
+
+The lack of testing was also mentioned in a recently created issue by one of the contributors. Here it is being discussed that the phaser-examples should and could be used for regression testing, but that the actual implementation of this is still to be reviewed and discussed.
+
 ### Instrumentation
-The framework has an `DebugHeader` to provide useful feedback to the developper by means of console logs and statistics.
+The framework has an `DebugHeader` to provide useful feedback to the developer by means of console logs and statistics.
 
 ### Codeline Organization
+The codeline organization of a system is all about the structure of the code base itself and how the project is managed in terms of releases. The code base structure of the project is not very special, besides the regular git folders and required configuration files. There is one 'src' folder containing the packages as already showed in the model structure model. 
+
 As mentioned, since recently the project has a working CI environment.
 Every commit is built by Travis to reduce the risk of releasing failing code.
 Dependencies are managed using the package manager from Node.js (`npm`).
 The code itself is then built using `webpack`, which bundles the source code in a single JavaScript file which can be used in the browser.
 
 All releases of Phaser are managed on GitHub.
-Whenever a new release is ready, Richard will tag a commit with the version and update the changelogs.
+Whenever a new release is ready, Richard will tag a commit with the version and update the changelogs. These changelogs contain detailed information on what has been changed and by who this has been changed. The time between these releases is about 5 days on average
 
-## Technical Dept
-In this chapter we investigated the technical debt of the phaser repository.
+## Technical Debt
+In this section we investigated the technical debt of the phaser repository.
 Technical debt is all about how much it would cost extra in the future if you have to redevelop a solution which was chosen now, instead of applying a better solution now that would take more time.
 So technical debt concerns the code quality of a software project and if this code was tested properly.
 To analyze the technical debt, we use code quality tools like SonarQube to get an overview of the source code quality to detect pieces of software that could be improved.
@@ -387,6 +454,17 @@ The project would benefit from this as it could assure that for example the wide
 When investigating ways to test a JavaScript game engine we stumbled upon the [Crafty game library](https://github.com/craftyjs/Crafty).
 This project is tested with a JavaScript unit testing framework called [QUnit](https://qunitjs.com/), which could be a useful addition to the Phaser project.
 Setting up a test environment for this project would however require a lot of in-depth knowledge on the inner workings of the systems and calculations, which would make it very time consuming for us.
+[Technical Debt](#technical-debt) says a lot about the current status of the project.
+But of course when looking into the changes of the technical debt over time, conclusions can be drawn about the evolution of the community and the project.
+
+TODO[cw]: maybe move this to #evolution-of-phaser ?
+### Technical debt evolution
+As we have seen with the help of SonarQube, there were a lot of code smells related to useless assignments or unused variables. When looking at this kind of code smell it becomes clear that almost all of them were introduced in the last six months. This is probably related to the fact that the last two years were all about going from Phaser 2 to Phaser 3. In this period a lot of new code was produced, but also old code was reused and refactored. Besides this, 18 of the 74 issues were introduced in the same class by the same person and in the same method. This is due to the many if else conditions in this class with variables which are created by doing a bitwise operation. So for this class to be changed eventually, we probably have to create an issue in which we ask the contributor what is going on here. 
+
+![Bitwise operator](./images/sonarqube/operator.png)
+
+### Technical debt discussion
+At the time of writing Phaser's code contains 24 TODO's and no FIXME's. The TODO's can be considered as a means to communicate technical debt. Debt is also discussed by developers on the Phaser forum and in Github issues. Developers create an issue when they find a bug, or ask questions about the system. For example as mentioned earlier, a user was wondering why the project is lacking automated test and opened an [issue](https://github.com/photonstorm/phaser/issues/3361) about it. So some of the people do find it important, but before any progress is made on this topic the owner of Phaser still has to decide what to do with it.
 
 ## Functional View
 <!--
@@ -400,9 +478,7 @@ Setting up a test environment for this project would however require a lot of in
     NOTES:
     With a good functional view, it will also be easier to explain the development view better (which has to be improved anyway)
 -->
-TODO: @Tcatshoek talk about Phaser start-up sequence and/or plugins
-
-
+TODO: @Tcatshoek talk about Phaser start-up sequence and/or plugins?!
 
 ## Evolution of Phaser
 <!--
@@ -418,7 +494,7 @@ TODO: @Tcatshoek talk about Phaser start-up sequence and/or plugins
 In this section the Evolution of Phaser of the past years will be discussed.
 
 Since the start of the Phaser framework in 2013 a lot has changed of course.
-Both performance of both mobile and desktop platforms have improved even further and that a lot of new possibilities were created by different frameworks.
+The performance of both mobile and desktop platforms have improved even further and that a lot of new possibilities were created by different frameworks.
 These frameworks allowed the growth of Phaser.
 WebGL is a good example of this, because WebGL provides a standard rendering API which works across most browsers these days.
 PixiJS is a graphics library build on top of WebGL which allows for easy rendering of certain objects.
