@@ -38,6 +38,7 @@ TODO[cw]:
 
 ## Stakeholders Analysis
 To get a feeling about everyone who is involved in the Phaser project, all the stakeholders will be listed and explained below.
+After that they will be combined into a [Power-Interest grid](#power-interest-grid).
 
 ### Donators
 The project has a [Patreon](https://www.patreon.com/photonstorm) page via which supporters can pledge a monthly contribution.
@@ -98,6 +99,23 @@ For example [PixiJS](https://github.com/pixijs/pixi.js) which is a lightweight l
 In fact, Phaser used to be based on PixiJS, but in the meantime it has been heavily modified and incorporated in the system.
 Other interesting Phaser competitors can be found in this [GitHub collection](https://github.com/collections/javascript-game-engines). 
 Some of them focus on 3D games whereas Phaser's main focus is 2D games (although it has some support for 3D).
+
+### Power-Interest grid
+We analyzed the power and interest of Phaser's stakeholders and visualized this in a power-interest grid.
+
+The stakeholder with the most power and interest is obviously Richard with his company Photon Storm. He earns his money with Phaser and developing Phaser games and he manages the entire Phaser project.
+
+The Phaser developers also have significant influence in the project, but Richard will always have the final say.
+
+Suppliers like WEBGL have no immediate involvement with the project but Phaser does depend on them. Therefor they have high power but low interest. When for example WEBGL decides to overhaul their API, this will require Phaser to rewrite the corresponding code. 
+
+The game developers use Phaser for their games so they have interest in the project, but not as much power. They can contact Richard for feature requests or bug reports. Donators have slightly more power and interest as they are willing to pay for the project on a monthly basis and (as stated on the Patreon page) they have a direct say on new features.
+
+Competitors have relatively low power, as Phaser is by far the most popular framework. They do have high interest though, as they want to compete with Phaser.
+
+The gamers, who play games created with Phaser have low power and low interest. For the gamer it does not matter as much which framework was used to create the game, the actual gameplay is what matters for them.
+
+![Power-Interest grid](./images/powerinterest.png)
 
 ## Issue Analysis
 TODO[cw]: remove these, but maybe say something about the general trend.
@@ -284,7 +302,7 @@ Games consume the services provided by phaser by calling its API to do all thing
 ### Context diagram
 An overview of phaser and its relations to the external entities mentioned above can be seen in the Figure below.
 
-![Context diagram](./images/Context_diagram.png)
+![Context diagram](./images/context_diagram.png)
 
 ## Development View
 <!-- p366 of the book-->
