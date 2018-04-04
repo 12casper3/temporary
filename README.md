@@ -31,10 +31,22 @@ TODO[cw]:
 
 ## Introduction
 <!-- Explain what Phaser is. -->
-TODO[cw]:
+Phaser is an open-source JavaScript game framework.
+It is licensed using the MIT License, so people are allowed to use it freely, even for commercial purposes.
+The framework implements both WebGL and HTML5 Canvas rendering, so it can be used in any browser with support for them.
+On top of that, by using 3rd party tools it is possible to package your phaser apps as native ones.
+
+The community around Phaser mainly consists of game developers who use the platform, either for hobby or commercial purposes.
+Phaser's main developer and integrator is Richard Davey. He has been working on phaser since 2012, and it has grown tremendously since then.  
+There are daily commits to the repository and every week a whole bunch of issues are created and closed.
+
+Just a few months before writing this chapter, Phaser 3 was realeased.
+This new version improved a lot of all the problems they had with Phaser 2.
 
 <!-- Explain the content of this chapter. -->
-TODO[cw]:
+This chapter is written as part of the DESOSA (Delft Students on Software Architecture) book which summerizes all the work done for the TU Delft course on Software Architectures.
+It will provide an analysis of many different aspects of the Phaser project.
+This of course includes the technical perspective based on the code but also the business aspects are looked by defining the stakeholders.
 
 ## Stakeholders Analysis
 To get a feeling about everyone who is involved in the Phaser project, all the stakeholders will be listed and explained below.
@@ -65,6 +77,8 @@ The contributor top 5 (based on amount of commits) is:
 | [Michael Hadley](https://github.com/mikewesthad) | |
 | [pnstickne](https://github.com/pnstickne)| worked on first Phaser version in 2015 |
 
+So the main incentive of the two main developers just arises from of their paid jobs.
+When looking at other people doing commits it is usually because they are a game developer using the platform themselves.
 
 ### Maintainers
 [Richard Davey](https://github.com/photonstorm/) manages all pull requests and issues on Github.
@@ -97,13 +111,14 @@ Besides, it is used by several other HTML5 game developers.
 With over 20 000 stars on GitHub Phaser is the biggest HTML5 game framework, but Phaser does have some notable competitors.
 For example [PixiJS](https://github.com/pixijs/pixi.js) which is a lightweight library mostly used for the rendering part of game creation.
 In fact, Phaser used to be based on PixiJS, but in the meantime it has been heavily modified and incorporated in the system.
-Other interesting Phaser competitors can be found in this [GitHub collection](https://github.com/collections/javascript-game-engines). 
+Other interesting Phaser competitors can be found in this [GitHub collection](https://github.com/collections/javascript-game-engines).
 Some of them focus on 3D games whereas Phaser's main focus is 2D games (although it has some support for 3D).
 
 ### Power-Interest grid
 We analyzed the power and interest of Phaser's stakeholders and visualized this in a power-interest grid.
 
-The stakeholder with the most power and interest is obviously Richard with his company Photon Storm. He earns his money with Phaser and developing Phaser games and he manages the entire Phaser project.
+The stakeholder with the most power and interest is obviously Richard with his company Photon Storm.
+He earns his money with Phaser and developing Phaser games and he manages the entire Phaser project.
 
 The Phaser developers also have significant influence in the project, but Richard will always have the final say.
 
@@ -117,113 +132,8 @@ The gamers, who play games created with Phaser have low power and low interest. 
 
 ![Power-Interest grid](./images/powerinterest.png)
 
-## Issue Analysis
-TODO[cw]: remove these, but maybe say something about the general trend.
-
-### [[Closed] Loader bug for audio and audioSprite beta 19 _#3182_](https://github.com/photonstorm/phaser/issues/3182)
-<!-- same day fix -->
-This small bug did not use the current global settings for the path, changing this was an easy fix.
-However it shows the quick response of the community, because it was fixed within the same day.
-
-### [[Open] Object based atlas loader not working properly _#3268_](https://github.com/photonstorm/phaser/issues/3268)
-<!-- label: bug (phaser) -->
-This bug is described a user, he found a problem with implementing an example provided in the API.
-At first sight the problem looks similar to the issue above, but when quickly scanning the source code we concluded that the problem is sligthly bigger.
-That will also be the reason why Richard added this bug to the Milestone for the new version (3.1.2).
-
-### [[Open] Add animation event example broken _#3265_](https://github.com/photonstorm/phaser/issues/3265)
-<!-- label: Example needs fixing -->
-This is a good example why software projects need automated testing, because this user was just trying out some examples and found one which did not work.
-He tried to fix it but that did not work, so Richard labeled the issue as 'Example needs fixing'.
-
-### [[Open] Tweening Matter.js object scale results in memory leak _#3248_](https://github.com/photonstorm/phaser/issues/3248)
-The given label 'need checking' drew our attetention.
-A user ran into the problem of unintutive function behaviour, with simple functions like scaling an object/image this is not desireable.
-However Richard did not have a solution yet and ended this reply with "that's how it works".
-This almost looks code smell worth further investigation!
-
-### [[Open] Phaser.GameObjects.Group.destroy() seems to be failing _#3246_](https://github.com/photonstorm/phaser/issues/3246)
-The source of this issue comes from the differences between Phaser3 and the previous versions.
-When an object group was destroyed, all the children would also be destroyed in the previous version.
-However to prevent unclear parent - children references, this was deliberately removed from the Phaser 3 implementation so groups just provide options for easy management of multiple objects.
-Since it also make sense for a parent object to nicely destory its children, [feature request _#3251_](https://github.com/photonstorm/phaser/issues/3251) has been created.
-
-### [[Closed] Failed to construct 'AudioContext': number of hardware contexts reached maximum _#3238_](https://github.com/photonstorm/phaser/issues/3238)
-This issue has a couple of interesting things happening.
-For starters, a user experienced issues after running multiple instances of his software (something that is likely to slip through an automated testing environment).
-The problem was fixed by one of the main developers and besides that he also advised the user to use a different implementation strategy.
-
-### [[Open] Phaser.CANVAS doesn't rotate tilesprites _#3231_](https://github.com/photonstorm/phaser/issues/3231)
-A user of the framework noticed that tilesprites do not rotate in CANVAS mode, which he proved with an example.
-Richard marked the issue as a bug and also noted that the tilesprites do no scale.
-
-### [[Open] Can I use TypeScript on Phaser 3? _#3224_](https://github.com/photonstorm/phaser/issues/3224)
-This issue was created to ask a technical question about the project, so this user is looking for support.
-He got several answers from communicators who try to help him with the question.
-
-### [[Closed] Box2D Plugin - renderBody seems to incorrectly render x-direction on camera move _#2981_](https://github.com/photonstorm/phaser/issues/2981)
-This issue was created as there appeared to be a bug in the camera movement of the Box2D Plugin.
-The creator of the issue included a GIF demonstrating the bug and a link to a forum thread which discusses this particular issue.
-A user in the comments of the issue noticed an error in the code provided by the creator.
-Richard closed the issue as there was no activity thereafter and no fixing was required.
-
-### [[Closed] Kindle Fire Tablets HD 6, 7 & HDX 8.9 all crash when using Cordova with Phaser _#1673_](https://github.com/photonstorm/phaser/issues/1673)
-An interesting issue was created when a user noticed compatibility issues with Kindle Fire Tablets.
-The user tried to get his code to run on those tablets using Cordova/PhoneGap, but it kept crashing.
-Richard then suggested to switch to CANVAS mode instead of auto detect mode, which fixed the issue.
-It turned out that the auto detect mode incorrectly chose WebGL mode, which (after some discussion) turned out to be a PhoneGap bug.
-A user posted a workaround in the comments, after which Richard decided to close the issue as it was a 3rd party bug.
-
-## Pull Request Analysis
-Almost all of the pull requests are a reviewed/approved/closed by Richard Davey.
-TODO[cw]: remove these, but maybe say something more about the general trend.
-
-### [[Open] Update WebGL Graphics.arc to work more like on Canvas _#3240_ ](https://github.com/photonstorm/phaser/pull/3240)
-This user (called Twilrom) added some code which fixes problems with circle rendering done.
-This help future Users and Developers as the API will run more smoothly when the circle rendering is done right.    
-
-### [[Open] load.plugin now accepts class as an argument besides an url-string _#3234_ ](https://github.com/photonstorm/phaser/pull/3234)
-This user (called nkholski) added some code so the loading op Plugins would be faster.This could improve the performance of the framework when working with external plugins.
-Another contributor called rblopes made a comment on the formatting of the user which was fixed afterwards.
-
-### [[Closed] static is reserved keyword _#3261_](https://github.com/photonstorm/phaser/pull/3261)
-This user (called mgutz) added some code which was already added by another pull request.
-A contributor named rblopes pointed this out.
-That is why this pull request is being closed by another contributor/developer. 
-
-### [[Merged] Use webpack-shell-plugin onBuildExit event _#3259_](https://github.com/photonstorm/phaser/pull/3259)
-This user (called rblopes) made changes in the webpack config, he actss as a production engineer.
-This will cause the test repository to rebuild every time phaser is being updated so the changes can be tested faster.
-So the user makes it easier for the developers and testers.
-
-### [[Closed] Fix camera jitter _#3258_](https://github.com/photonstorm/phaser/pull/3258)
-In this case the user (called bradharms) has provided some code in order to fix a bug.
-The fix to this bug has already been provided by someone else, so this pull request was closed. 
-
-### [[Merged] Bugfixes in Structs.Set _#3254_](https://github.com/photonstorm/phaser/pull/3254)
-In this case a bug on a own implementation of ```Set``` is being fixed by a user called (yupaul).
-This was approved by the owner.
-
-### [[Merged] Add CodePen template _#3250_](https://github.com/photonstorm/phaser/pull/3250)
-This user (called samme) added some links in the documentation about contributing to the project.
-This helps the developers while contributing to the project.
-Therefor, this user acts as a communicator in this pull request.
-
-### [[Closed] Update WebGL Graphics.arc to work more like on Canvas _#3214_](https://github.com/photonstorm/phaser/pull/3214)
-Here a user (again Twilrom) tried to change the way arcs were being rendered by the system.
-This was rejected by the owner as tests pointed out that it did not work correctly any more.
-
-### [[Merged] Few bug fixes for Ellipse methods _#3167_](https://github.com/photonstorm/phaser/pull/3167)
-At this pull request the owner reviewed a piece a code.
-Richard then asked the contributor (called Antriel) to explain why he made that change.
-After the explaination of the developer, the pull request had been merged.
-
-### [[Merged] Some bugfixes _#3086_](https://github.com/photonstorm/phaser/pull/3086)
-In this pull request a couple of small bugs had been fixed.
-The owner required the contributor (also Twilrom) to revert some of the changes before this pull request could be accepted.
-
 ## Stakeholder Influence Analysis
-<!-- ASSIGNMENT: 
+<!-- ASSIGNMENT:
 From this (10 issue, explain what sort of stakeholders are involved, what their interest in the system is, and how they are trying to influence the development of the system.-->
 The most involved stakeholders are the maintainer and the developers who use the phaser framework.
 For the maintainer it is mostly Richard Davey who reviews and manages the pull requests.
@@ -231,13 +141,13 @@ This is a bit different with the issues created by other users.
 Here, Richard Davey is supported by the other active developers as they also comment on these issues to discuss them.
 
 ## Integrator Analysis
-<!-- ASSIGNMENT: 
+<!-- ASSIGNMENT:
 Based on your analysis, identify the integrators in your project (see the blog post by Georgios Gousios).
 http://www.gousios.gr/blog/How-do-project-owners-use-pull-requests-on-Github.html
 Identify their challenges and merge decision strategies.
 Identify relevant people you would like to contact.-->
 Since Phaser has a relatively small community the role of Integrator is not as big as usually seen.
-So as the main created Richard has a big say in everything and is involved in most of the PRs.
+So as the main creator Richard has a big say in everything and is involved in most of the PRs.
 He just thinks about the effects of each PR before merging, so there is not an official checklist or method to accept PR.
 It would of course be interesting to talk to Richard before we are going to do any work on the project.
 
@@ -252,7 +162,7 @@ Phaser is a javascript game framework which game developers can use to handle:
 * Animation, tweens and interpolation
 * Sound effects and music
 * Input from keyboard, mouse, touch, and gamepads
-* Asset loading from URLs 
+* Asset loading from URLs
 * Physics using Arcade physics, Matter.js, and in the future P2 Physics and Box2D
 
 For the sake of completeness, there are also things phaser does not do:
@@ -278,26 +188,32 @@ Several of its relations to the outside world are described below:
 * Gamers of all ages play the games made with phaser
 
 ### External interfaces
-Here we will describe the interfaces between phaser and its external entities. 
+Here we will describe the interfaces between phaser and its external entities.
 
 | Entity | Data | Service | Event |
 |:-------|:----:|:-------:|:-----:|
-|Javascript | both | both | provider | 
+|Javascript | both | both | provider |
 |Html5 / canvas| consumer | provider | x |
 |WebGL|consumer| provider |x |
-|Webpack |x | provider |x | 
-|Github |x | provider  |x | 
-|Games |x | consumer  |x | 
+|Webpack |x | provider |x |
+|Github |x | provider  |x |
+|Games |x | consumer  |x |
 
-Some of this might require a little clarification. We see Javascript as both a data provider and consumer as it can be used for asset loading and all other forms of data input, as well as output (eg. uploading highscores or save files to an external server. That would be up to the games made with phaser to implement though, but the option is there). We also see it as both a service provider and consumer as it is obviously used to call the phaser api, but phaser itself is written in javascript. On top of that, we also see it as an event provider, as it passes input events from input devices to phaser to handle later. 
+Some of this might require a little clarification.
+We see Javascript as both a data provider and consumer as it can be used for asset loading and all other forms of data input, as well as output (eg. uploading highscores or save files to an external server.
+That would be up to the games made with phaser to implement though, but the option is there).
+We also see it as both a service provider and consumer as it is obviously used to call the phaser api, but phaser itself is written in javascript.
+On top of that, we also see it as an event provider, as it passes input events from input devices to phaser to handle later.
 
-Html5, or more precisely the canvas element, is seen as a data consumer, as phaser passes information to it on what to draw. It is also a service provider, as it provides drawing functionality to phaser. The same goes for WebGL. 
+Html5, or more precisely the canvas element, is seen as a data consumer, as phaser passes information to it on what to draw.
+It is also a service provider, as it provides drawing functionality to phaser.
+The same goes for WebGL.
 
 Webpack provides a module bundling service to phaser, which is used to create a distributable, and possibly minified build of phaser to use in production.
 
 Github provides version control and tools for collaboration.
 
-Games consume the services provided by phaser by calling its API to do all things games want to do. 
+Games consume the services provided by phaser by calling its API to do all things games want to do.
 
 ### Context diagram
 An overview of phaser and its relations to the external entities mentioned above can be seen in the Figure below.
@@ -373,7 +289,11 @@ This serves both documentation and testing purposes.
 Recently Travis continuous integration was added, however it is not very extensive because it just checks if `webpack` and `ESLint` do not return any errors.
 It has to be noted that `webpack` just checks for Javascript syntax errors, so it is still possible for errors to pass the CI.
 
-However, setting up a testing framework could improve the quality and reliability of Phaser as a framework. As Phaser makes use of a lot of helper functions, there is a need to start testing these functions first. For instance, the Math package contains helper classes for performing mathematical operations and the Utils package contains additional functionalities for the objects String, Array and Object. Furthermore, it would also be beneficial to test the data loading, as the graphics used in Phaser projects could consist of external files like images or gifs. Another part which could use some testing is the Gameobjects module as this contains a lot of configurations options, as well as a wide variety of actions that can be performed on these objects.  
+However, setting up a testing framework could improve the quality and reliability of Phaser as a framework.
+As Phaser makes use of a lot of helper functions, there is a need to start testing these functions first.
+For instance, the Math package contains helper classes for performing mathematical operations and the Utils package contains additional functionalities for the objects String, Array and Object.
+Furthermore, it would also be beneficial to test the data loading, as the graphics used in Phaser projects could consist of external files like images or gifs.
+Another part which could use some testing is the Gameobjects module as this contains a lot of configurations options, as well as a wide variety of actions that can be performed on these objects.
 
 The lack of testing was also mentioned in a recently created issue by one of the contributors. Here it is being discussed that the phaser-examples should and could be used for regression testing, but that the actual implementation of this is still to be reviewed and discussed.
 
@@ -381,7 +301,9 @@ The lack of testing was also mentioned in a recently created issue by one of the
 The framework has an `DebugHeader` to provide useful feedback to the developer by means of console logs and statistics.
 
 ### Codeline Organization
-The codeline organization of a system is all about the structure of the code base itself and how the project is managed in terms of releases. The code base structure of the project is not very special, besides the regular git folders and required configuration files. There is one 'src' folder containing the packages as already showed in the model structure model. 
+The codeline organization of a system is all about the structure of the code base itself and how the project is managed in terms of releases.
+The code base structure of the project is not very special, besides the regular git folders and required configuration files.
+There is one `src` folder containing the packages as already showed in the model structure model.
 
 As mentioned, since recently the project has a working CI environment.
 Every commit is built by Travis to reduce the risk of releasing failing code.
@@ -477,7 +399,13 @@ But of course when looking into the changes of the technical debt over time, con
 
 TODO[cw]: maybe move this to #evolution-of-phaser ?
 ### Technical debt evolution
-As we have seen with the help of SonarQube, there were a lot of code smells related to useless assignments or unused variables. When looking at this kind of code smell it becomes clear that almost all of them were introduced in the last six months. This is probably related to the fact that the last two years were all about going from Phaser 2 to Phaser 3. In this period a lot of new code was produced, but also old code was reused and refactored. Besides this, 18 of the 74 issues were introduced in the same class by the same person and in the same method. This is due to the many if else conditions in this class with variables which are created by doing a bitwise operation. So for this class to be changed eventually, we probably have to create an issue in which we ask the contributor what is going on here. 
+As we have seen with the help of SonarQube, there were a lot of code smells related to useless assignments or unused variables.
+When looking at this kind of code smell it becomes clear that almost all of them were introduced in the last six months.
+This is probably related to the fact that the last two years were all about going from Phaser 2 to Phaser 3.
+In this period a lot of new code was produced, but also old code was reused and refactored.
+Besides this, 18 of the 74 issues were introduced in the same class by the same person and in the same method.
+This is due to the many if else conditions in this class with variables which are created by doing a bitwise operation.
+So for this class to be changed eventually, we probably have to create an issue in which we ask the contributor what is going on here.
 
 ![Bitwise operator](./images/sonarqube/operator.png)
 
@@ -529,7 +457,25 @@ There is a separete [Phaser 3 Documentation repository](https://github.com/photo
 Since all documentation is automatically anyway, it would have been nice to just publish it anyway and refresh it every release because this might trigger other developers or users into updating the documentation when they need to.
 
 ## Conclusions
-TODO[cw]:
+In this chapter we analyzed the Phaser HTML5 game framework. We can conclude that this is a well-functioning and thought-out project.
+
+The first section describes the stakeholders involved in this project.
+The creator of the project, Richard Davey, is by far the most important stakeholder.
+He manages the entire project on his own.
+We did identify several other stakeholders, like donators and the game developers/users.
+Futhermore we analyzed the power and interest of those stakeholders, where we concluded that Richard (with his company Photon Storm) has the most power and most interest.
+We also looked at issues and pull requests to determine the influence of stakeholders and analyze the integrators.
+
+In the context view section we analyzed the dependencies of the project and visualized this in a context diagram.
+Here it became clear that depends on a wide variety of external entities, like browsers and suppliers.
+
+Phaser uses common processing (for example the renderer) and standardization (for example the `GameObjects`) in the design of the project.
+In the Development view section we looked into the structure of Phaser's codebase.
+We also concluded that there was no automated testing, apart from the linting in Travis CI and the provided examples which can be run manually.
+
+The technical debt turned out to be very low, only two days. We ran automated code quality analysis tools (SonarQube and DeepScan) to conclude this. Most issues were minor so they are relatively easy to fix. However, as there are no test, the testing debt was very high.
+
+Phaser keeps evolving with releases almost every week, with a a major release only recently, Phaser 3. We managed to make some contributions which helped progress the project. All in all, Phaser is a really interesting project which is professionally managed, albeit by a single person. We enjoyed working on the project and will follow the progress it will make over time.
 
 ## References
 TODO[cw]: either add some or remove
