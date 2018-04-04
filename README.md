@@ -147,7 +147,7 @@ http://www.gousios.gr/blog/How-do-project-owners-use-pull-requests-on-Github.htm
 Identify their challenges and merge decision strategies.
 Identify relevant people you would like to contact.-->
 Since Phaser has a relatively small community the role of Integrator is not as big as usually seen.
-So as the main creator Richard has a big say in everything and is involved in most of the PRs.
+So as the main created Richard has a big say in everything and is involved in most of the PRs.
 He just thinks about the effects of each PR before merging, so there is not an official checklist or method to accept PR.
 It would of course be interesting to talk to Richard before we are going to do any work on the project.
 
@@ -282,21 +282,6 @@ Any additional functionality can be implemented in each individual `GameObject`.
 This makes the system more maintainable and easier to extend.
 Whenever a new `GameObject` needs to be added, simply create a class which extends `GameObject` and implement the additional functionalty.
 
-### Standardization of Testing
-This project has limited automated testing functions.
-Instead this project uses quite an extensive collection of examples, so for most of the functionalities and features simple example scripts are provided.
-This serves both documentation and testing purposes.
-Recently Travis continuous integration was added, however it is not very extensive because it just checks if `webpack` and `ESLint` do not return any errors.
-It has to be noted that `webpack` just checks for Javascript syntax errors, so it is still possible for errors to pass the CI.
-
-However, setting up a testing framework could improve the quality and reliability of Phaser as a framework.
-As Phaser makes use of a lot of helper functions, there is a need to start testing these functions first.
-For instance, the Math package contains helper classes for performing mathematical operations and the Utils package contains additional functionalities for the objects String, Array and Object.
-Furthermore, it would also be beneficial to test the data loading, as the graphics used in Phaser projects could consist of external files like images or gifs.
-Another part which could use some testing is the Gameobjects module as this contains a lot of configurations options, as well as a wide variety of actions that can be performed on these objects.
-
-The lack of testing was also mentioned in a recently created issue by one of the contributors. Here it is being discussed that the phaser-examples should and could be used for regression testing, but that the actual implementation of this is still to be reviewed and discussed.
-
 ### Instrumentation
 The framework has an `DebugHeader` to provide useful feedback to the developer by means of console logs and statistics.
 
@@ -361,7 +346,7 @@ Another aspect SonarQube looks at is test coverage:
 ![Test coverage](./images/sonarqube/coverage.png)
 
 This is where the project really lacks behind; it simply does not have any tests.
-More on this in the Testing debt section.
+More on this in the [Testing debt](#testing-debt) section.
 
 The final aspect SonarQube check is code duplication:
 
@@ -384,18 +369,38 @@ These were mostly issues which were also found by SonarQube.
 The SonarQube scan however provided much more insight into the technical debt of the system, which is why we decided to concentrate on those results.
 
 ### Testing debt
-As mentioned before the project does not contain any automated tests, apart from the Travis continuous integration use.
+The project does not contain any automated tests, apart from the Travis continuous integration use.
+This just checks if `webpack` and `ESLint` do not return any errors.
+And it has to be noted that `webpack` just checks for Javascript syntax errors, so it is still possible for errors to pass the CI.
 The extensive example repository with small pieces of example code for each part of the system is used as a way of manual testing.
 
-It could be argued that is hard to test a gaming framework, which in part is true.
-For example, how would you test that for example a certain shape is drawn on the screen as expected? This however, is not an excuse to not have any tests at all.
+It could be argued that it is hard to test a gaming framework, which in part is true.
+For example, how would you test that for example a certain shape is drawn on the screen as expected?
+This however, is not an excuse to not have any tests at all.
 Unit tests could be used to test the logic of the code.
 The project would benefit from this as it could assure that for example the wide variety of calculations done by the framework are correct.
+
+A good example of a bug which could have been spotted earlier with these tests is a rotation function which rotated the opposite direction of what it was supposed to do, see [this commit](https://github.com/photonstorm/phaser/commit/46e9dbd05a4ea474f4f452a29a6e0debdb223261) thanks to @Tomas2h.
+
 When investigating ways to test a JavaScript game engine we stumbled upon the [Crafty game library](https://github.com/craftyjs/Crafty).
 This project is tested with a JavaScript unit testing framework called [QUnit](https://qunitjs.com/), which could be a useful addition to the Phaser project.
-Setting up a test environment for this project would however require a lot of in-depth knowledge on the inner workings of the systems and calculations, which would make it very time consuming for us.
-[Technical Debt](#technical-debt) says a lot about the current status of the project.
-But of course when looking into the changes of the technical debt over time, conclusions can be drawn about the evolution of the community and the project.
+
+As Phaser makes use of a lot of helper functions, there is a need to start testing these functions first.
+For instance, the Math package contains helper classes for performing mathematical operations and the Utils package contains additional functionalities for the objects String, Array and Object.
+Furthermore, it would also be beneficial to test the data loading, as the graphics used in Phaser projects could consist of external files like images or gifs.
+Another part which could use some testing is the Gameobjects module as this contains a lot of configurations options, as well as a wide variety of actions that can be performed on these objects.
+
+
+The extensive collection of examples for the project serves both documentation and testing purposes of course.
+However, setting up a real testing framework to also test the rendering could improve the quality and reliability of Phaser as a framework.
+
+The lack of testing was also mentioned in a recently created issue by one of the contributors([#3361](https://github.com/photonstorm/phaser/issues/3361)).
+Here it is being stated that the phaser-examples should and could be used for regression testing, but that the actual implementation of this is still to be reviewed and discussed.
+A nice way to do these tests is to take screenshots of the examples and compare them with a reference screenshot.
+All the non-deterministic things like random numbers will pose a problem here though.
+So to really hit this off, a deterministic version should be created.
+And since most of the Phaser 2 examples are not working with Phaser 3 now, it would have been wise to start with this during Phaser 2 already so it would be easy to see the status of the switch to Phaser 3.
+This wish of having these features implemented in the past is of a textbook example of technical debt!
 
 TODO[cw]: maybe move this to #evolution-of-phaser ?
 ### Technical debt evolution
@@ -457,25 +462,7 @@ There is a separete [Phaser 3 Documentation repository](https://github.com/photo
 Since all documentation is automatically anyway, it would have been nice to just publish it anyway and refresh it every release because this might trigger other developers or users into updating the documentation when they need to.
 
 ## Conclusions
-In this chapter we analyzed the Phaser HTML5 game framework. We can conclude that this is a well-functioning and thought-out project.
-
-The first section describes the stakeholders involved in this project.
-The creator of the project, Richard Davey, is by far the most important stakeholder.
-He manages the entire project on his own.
-We did identify several other stakeholders, like donators and the game developers/users.
-Futhermore we analyzed the power and interest of those stakeholders, where we concluded that Richard (with his company Photon Storm) has the most power and most interest.
-We also looked at issues and pull requests to determine the influence of stakeholders and analyze the integrators.
-
-In the context view section we analyzed the dependencies of the project and visualized this in a context diagram.
-Here it became clear that depends on a wide variety of external entities, like browsers and suppliers.
-
-Phaser uses common processing (for example the renderer) and standardization (for example the `GameObjects`) in the design of the project.
-In the Development view section we looked into the structure of Phaser's codebase.
-We also concluded that there was no automated testing, apart from the linting in Travis CI and the provided examples which can be run manually.
-
-The technical debt turned out to be very low, only two days. We ran automated code quality analysis tools (SonarQube and DeepScan) to conclude this. Most issues were minor so they are relatively easy to fix. However, as there are no test, the testing debt was very high.
-
-Phaser keeps evolving with releases almost every week, with a a major release only recently, Phaser 3. We managed to make some contributions which helped progress the project. All in all, Phaser is a really interesting project which is professionally managed, albeit by a single person. We enjoyed working on the project and will follow the progress it will make over time.
+TODO[cw]:
 
 ## References
 TODO[cw]: either add some or remove
