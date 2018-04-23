@@ -25,7 +25,8 @@ TODO
 
 Marking EL images with cracks
 -----------------------------
-*Size:* L
+**Size:** L
+
 Make a tool where the User can mark cracks by dragging 4 colored rectangles over the EL images.
 The coordinates of these rectangles can then be stored in the database (and re-rendered when needed)
 
@@ -34,7 +35,8 @@ CRITICAL!
 
 Export high-res EL images from database (as *.zip/*.tar or something)
 ---------------------------------------------------------------------
-*Size:* M
+**Size:** M
+
 Now the high-res images just go into the database, and there is no way to get them out.
 
 nice-to-have, feature. But not needed now
@@ -42,7 +44,8 @@ nice-to-have, feature. But not needed now
 
 Load high-res NEF file when desired (so when inspecting the images for example)
 -------------------------------------------------------------------------------
-*Size:* M
+**Size:** M
+
 Now, the \*.NEF EL images are directly converted to a jpg of 1000px high, so the visual EL inspection is done on a low-res picture.
 It is rather easy to also convert a high-res JPG and show that in the imageView.
 
@@ -50,14 +53,16 @@ feature, critical for High-Resolution image to judge the EL image
 
 Display Status Saving + Compiling status is not shown untill the operations have been completed
 -----------------------------
-*Size:* M
+**Size:** M
+
 This is a problem with the JavaFx GUI update thread or something
 
 bug-fix, user experience
 
 escape all LaTeX dangerous characters (# and \ for example )
 -----------------------------
-*Size:* S
+**Size:** S
+
 Now there is no escaping done at all, so this might result in some future problems.
 
 nice-to-have, improves fault tolerance
