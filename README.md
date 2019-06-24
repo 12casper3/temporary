@@ -5,20 +5,12 @@ Exported logos
 ==============
 For easy use, the different versions of the logo are released in different file formats.
 The possible combinations are:
-Color - Black
-Text - NoText
-
-*.pdf, *.eps, *.png
-
-Small, Medium and Large resolutions.
+* Color - Black
+* Text - NoText
+* *.pdf, *.eps, *.png
+* Small, Medium and Large resolutions.
 
 A vector version (*.tikz, *.pdf, *.eps) of the logo should be used where possible.
-
-Export to EPS
--------------
-EPS exports are done by converting the *.dvi from ```latex logo``` using ```dvips -E logo ```.
-The exported *.pdf from pdflatex can of course also be converted to *.eps directly, by using a command like ```pdftops -eps logo.pdf```.
-
 
 Installation & Dependencies
 ===========================
