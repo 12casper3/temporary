@@ -1,89 +1,42 @@
-# Definitions
-## Feasible
-A schedule \sigma is said to be feasible if all tasks are able to complete within a set of constraints.
+Usage
+=====
 
-## Schedulable
-Task set \Gamma is said to be schedulable if there exists a feasible schedule for it.
+Exported logos
+==============
+For easy use, the different versions of the logo are released in different file formats.
+The possible combinations are:
+Color - Black
+Text - NoText
 
-## Optimality
-* Algorithm finds a feasible schedule if there exists one
-And tries for example to optimize for:
-* Minimize the maximum lateness
-* Minimize the number of deadline misses
-* Maximize the total reward value of completed tasks
+*.pdf, *.eps, *.png
 
-## Lateness
-L_i = f_i - d_i
-L < 0 : slack
-L > 0 : deadline miss
+Small, Medium and Large resolutions.
 
-# Classical Scheduling Policies
-## FCFS (First Come First Serve)
-- very unpredictable
-    (3 tasks (S,M,L) arriving right after each other. The response time depends strongly on the order of arrival)
-- not optimal
-* Non Preemptive
-* Dynamic
-* Online
+A vector version (*.tikz, *.pdf, *.eps) of the logo should be used where possible.
 
-## SJF (Shortest Job First)
-+ Minimize average response time
+Export to EPS
+-------------
+EPS exports are done by converting the *.dvi from ```latex logo``` using ```dvips -E logo ```.
+The exported *.pdf from pdflatex can of course also be converted to *.eps directly, by using a command like ```pdftops -eps logo.pdf```.
 
-* Non preemtive or preemptive
-* Static
-* Online or Offline
 
-## Priority Scheduling
-* fixed priorities for each task.
-* Same priorities are served FCFS
+Installation & Dependencies
+===========================
+Compiling the logo requires LaTeX.
 
-* Preemptive
-* Static or Dynamic
-* Online
+ImageMagick is used to convert the pdfs to other formats.
 
-Problem: Starvation (which can be sovled with aging)
+Ubuntu
+------
 
-Note:
-* p_i relative to 1/C_i => SJF
-* p_i relative to 1/r_i => FCFS
+```sudo apt install texlive-latex-extra```
+```./compile_all.sh```
 
-## Round Robin
+Potential problems with ImageMagick exporting GIFs:
+https://stackoverflow.com/questions/42928765/convertnot-authorized-aaaa-error-constitute-c-readimage-453
 
-# Real-Time Aglorithms
-* relative deadlines D_i (static)
-* absolute deadlines d_i (dynamic)
-
-## EDD (Earliest Due Date)
-Earliest RELATIVE Deadlines (D_i)
-Minimizes the maximum lateness (L_max)
-
-* All tasks arrive simultaneously
-* Fixed priority (D_i is known in advance)
-* Preemption (is not an issue)
-
-off line guarantee test:
-for all i, check if the sum of all C_k is less or eq. than D_i (where k are all the tasks which should finish before (and incl.) task i).
-
-## EDF (Earliest Deadline First)
-Earliest absolute deadline (d_i)
-Minimizes the maximum lateness
-
-* arrive at any time
-* Dynamic priority (d_i depends on r_i)
-* Full preemtive 
-
-on line guarantee test:
-for all i should hold that, the sum of all 'to do' computations is less than the deadline d_i - the current time t.
-
-## LDF (Latest Deadline First)
-Constructed bottom->up!
-Handles precedences.
-nodes with no successors (so the bottom ones) are scheduled according to the lateste deadline. (note: sometimes this can be tricky)
-
-## EDF*
-transforms precedence constraints into modified arrival times and dealines to make EDF work.
-
-A -> B
-
-postpone arrival time of successor r^_B = r_A + C_A
-advance the deadline of a predecessor: d^_A = d_b - C_B
+Windows
+-------
+Install MiKTeX or TeX Live
+Install ImageMagick
+```.\compile_all.ps1```
