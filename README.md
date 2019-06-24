@@ -22,6 +22,7 @@ Ubuntu
 ------
 
 ```sudo apt install texlive-latex-extra```
+
 ```./compile_all.sh```
 
 Potential problems with ImageMagick exporting GIFs:
@@ -30,5 +31,7 @@ https://stackoverflow.com/questions/42928765/convertnot-authorized-aaaa-error-co
 Windows
 -------
 Install MiKTeX or TeX Live
+
 Install ImageMagick
+
 ```.\compile_all.ps1```
